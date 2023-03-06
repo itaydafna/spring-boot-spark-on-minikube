@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: word-count-driver-0.0.1
+  labels:
+    name: word-count
+spec:
+  replicas: 1
+  progressDeadlineSeconds: 1200
+  revisionHistoryLimit: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 50%
+      maxUnavailable: 50%
+  selector:
+    matchLabels:
+      name: word-count
+  template:
+    metadata:
+      labels:
+        name: word-count
+    spec:
+      containers:
+        - name: word-count
+          image: word-count-driver:0.0.1
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8090
