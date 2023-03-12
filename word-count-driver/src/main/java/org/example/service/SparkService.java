@@ -30,7 +30,7 @@ public class SparkService {
                 .setMaster("k8s://https://kubernetes.default.svc:443")
                 .setJars(new String[]{"word-count-spark-job.jar"})
 //                .setMaster("local")
-//                .setJars(new String[]{"/Users/idafna/dev/projects/tutorials/spring-boot-spark-on-k8s-draft/word-count-spark-job/target/word-count-spark-job-1.0-SNAPSHOT.jar"})
+//                .setJars(new String[]{"/Users/idafna/dev/projects/tutorials/spring-boot-spark-on-minikube/word-count-spark-job/target/word-count-spark-job-1.0-SNAPSHOT.jar"})
                 .set("spark.driver.host", hostIp)
                 .set("spark.driver.port", "8090")
                 .set("spark.kubernetes.namespace", "default")
