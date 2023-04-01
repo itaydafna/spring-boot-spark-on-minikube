@@ -14,8 +14,6 @@ import static org.apache.spark.sql.functions.*;
 
 
 public class WordCountSparkJob {
-
-
     public static String getWordCount(String contents, SparkSession sparkSession) {
         Dataset<String> text = sparkSession.createDataset(Arrays.asList(contents.split("[\r\n]+")), Encoders.STRING()).repartition(16);
         Dataset<String> wordsDataset = text.flatMap((FlatMapFunction<String, String>) line -> {
